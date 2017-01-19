@@ -45,10 +45,10 @@ exports.loadTest = function(req, res) {
 
 
 //Create and populate or delete the database.
-exports.dbOptions = function(req, res) {
+/*exports.dbOptions = function(req, res) {
     var option = req.params.option.toLowerCase();
     if (option === 'create') {
-        db.cloudant.db.create('items', function(err/*, body*/) {
+        db.cloudant.db.create('items', function(err/*, body* /) {
             if (!err) {
                 db.populateDB();
                 res.send({msg:'Successfully created database and populated!'});
@@ -57,7 +57,7 @@ exports.dbOptions = function(req, res) {
             }
         });
     } else if (option === 'delete') {
-        db.cloudant.db.destroy('items', function(err/*, body*/) {
+        db.cloudant.db.destroy('items', function(err/*, body* /) {
 	        if (!err) {
 	            res.send({msg:'Successfully deleted db items!'});
 	        } else {
@@ -67,21 +67,21 @@ exports.dbOptions = function(req, res) {
     } else {
     	res.send({msg: 'your option was not understood. Please use "create" or "delete"'});
 	}
-};
+};*/
 
 //Create an item to add to the database.
-exports.create = function(req, res) {
-    db.itemsDb.insert(req.body, function(err/*, body, headers*/) {
+/*exports.create = function(req, res) {
+    db.itemsDb.insert(req.body, function(err/*, body, headers* /) {
         if (!err) {
             res.send({msg: 'Successfully created item'});
         } else {
             res.send({msg: 'Error on insert, maybe the item already exists: ' + err});
         }
     });
-};
+};*/
 
 //find an item by ID.
-exports.find = function(req, res) {
+/*exports.find = function(req, res) {
     var id = req.params.id;
     if (USE_FASTCACHE) {
     	var idAsNumber = parseInt(id.substring(id.length - 2), 16);
@@ -99,27 +99,21 @@ exports.find = function(req, res) {
             res.send({msg:'Error: could not find item: ' + id});
         }
     });
-};
+};*/
 
 //list all the database contents.
 exports.list = function(req, res) {
-    db.itemsDb.list({include_docs: true}, function(err, body/*, headers*/) {
-	    if (!err) {
-	        res.send(body);
-	        return;
-	    }
-	   	res.send({msg:'Error listing items: ' + err});
-    });
+        res.send(db.itemsDb);
 };
 
 //update an item using an ID.
-exports.update = function(req, res) {
+/*exports.update = function(req, res) {
     var id = req.params.id;
     var data = req.body;
     db.itemsDb.get(id, {revs_info:true}, function(err, body) {
         if (!err) {
             data._rev = body._rev;
-            db.itemsDb.insert(data, id, function(err/*, body, headers*/) {
+            db.itemsDb.insert(data, id, function(err/*, body, headers* /) {
 	            if (!err) {
 	                res.send({msg:'Successfully updated item: ' + JSON.stringify(data)});
 	            } else {
@@ -131,15 +125,15 @@ exports.update = function(req, res) {
         	res.send({msg:'Error getting item for update: ' + err});
     	}
     });
-};
+};*/
 
 //remove an item from the database using an ID.
-exports.remove =  function(req, res) {
+/*exports.remove =  function(req, res) {
     var id = req.params.id;
     db.itemsDb.get(id, { revs_info: true }, function(err, body) {
         if (!err) {
             //console.log('Deleting item: ' + id);
-            db.itemsDb.destroy(id, body._rev, function(err/*, body*/) {
+            db.itemsDb.destroy(id, body._rev, function(err/*, body* /) {
                 if (!err) {
                     res.send({msg:'Successfully deleted item'});
                 } else {
@@ -150,18 +144,18 @@ exports.remove =  function(req, res) {
             res.send({msg:'Error getting item id: ' + err});
         }
     });  
-};
+};*/
 
 //calculate the fibonacci of 20.
-var fib = function(n) {
+/(var fib = function(n) {
     if (n < 2) {
         return 1;
     }
     return fib(n - 2) + fib(n - 1);
-};
-exports.fib = function(req, res) {
+};*/
+/*exports.fib = function(req, res) {
     res.send({msg:'Done with fibonacci of 20: ' + fib(20)});
-};
+};*.
 
 
 exports.getFastCache = function() {
