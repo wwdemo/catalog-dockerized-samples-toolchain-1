@@ -20,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'www')));
 //REST HTTP Methods
 app.get('/items', items.list);
 //app.get('/db/:option', items.dbOptions);
-//app.get('/items', items.list);
 //app.get('/fib', items.fib);
 //app.get('/loadTest', items.loadTest);
 //app.get('/items/:id', items.find);

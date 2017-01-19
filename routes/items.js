@@ -147,15 +147,16 @@ exports.list = function(req, res) {
 };*/
 
 //calculate the fibonacci of 20.
-/(var fib = function(n) {
+/* (var fib = function(n) {
     if (n < 2) {
         return 1;
     }
     return fib(n - 2) + fib(n - 1);
 };*/
-/*exports.fib = function(req, res) {
+/* 
+exports.fib = function(req, res) {
     res.send({msg:'Done with fibonacci of 20: ' + fib(20)});
-};*.
+};*/
 
 
 exports.getFastCache = function() {

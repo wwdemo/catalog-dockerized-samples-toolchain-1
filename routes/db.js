@@ -1,7 +1,7 @@
 /*eslint-env node */
-var cloudant = require('cloudant')(cloudantService.credentials.url);
-exports.cloudant = cloudant;
-var itemsDb = cloudant.use('items');
+//var cloudant = require('cloudant')(cloudantService.credentials.url);
+//exports.cloudant = cloudant;
+var itemsDb = [];
 exports.itemsDb = itemsDb;
 
 //populate the db with these items.
@@ -74,7 +74,7 @@ var populateDB = function() {
     }];
 
     for (var p in products){
-        itemsDb.insert(products[p], function(err/*, body, header*/) {
+        itemsDb.push(products[p], function(err/*, body, header*/) {
             if (err){
                 //console.log('error in populating the DB items: ' + err );
             }
@@ -85,13 +85,13 @@ exports.populateDB = populateDB;
 
 //Initiate the database.
 var initDB = function() {
-    cloudant.db.create('items', function(err/*, body*/) {
-	    if (!err) {
-	        populateDB();
+    //cloudant.db.create('items', function(err/*, body*/) {
+	//    if (!err) {
+		populateDB();
 	        //console.log('Successfully created database and populated!');
-	    } else {
+	  //  } else {
 	        //console.log("Database already exists.");
-	    }
-    });
+	  //  }
+   // });
 };
 exports.initDB = initDB;
