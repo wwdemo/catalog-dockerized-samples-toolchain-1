@@ -27,5 +27,5 @@ app.get('/items', items.list);
 //app.put('/items/:id', items.update);
 //app.delete('/items/:id', items.remove);
 
-app.listen(appEnv.port, appEnv.bind);
-console.log('App started on ' + appEnv.bind + ':' + appEnv.port);
+app.listen(80, appEnv.bind);
+console.log('App started on ' + 80 + ':' + appEnv.port);
